@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background: #0d1117;
+  color: #f3f4f6;
+}
+
+.bg-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.2) 1px, transparent 0);
+  background-size: 36px 36px;
+}
