@@ -1,32 +1,52 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, IBM_Plex_Sans } from "next/font/google";
-import "@/app/globals.css";
+import { Manrope, Space_Grotesk, Geist } from "next/font/google";
+import "./globals.css";
+import { cn } from "@/lib/utils";
 
-const heading = Space_Grotesk({
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-  variable: "--font-heading",
 });
 
-const body = IBM_Plex_Sans({
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
-  variable: "--font-body",
-  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://section174tracker.com"),
-  title: "Section 174 Tracker | Model R&D Tax Cash Flow Impact",
+  title: {
+    default: "Section 174 Tracker | Model R&D Tax Cash Flow Impact",
+    template: "%s | Section 174 Tracker",
+  },
   description:
-    "Track how Section 174 capitalization affects tax bills, cash flow, and runway for software companies.",
+    "Track Section 174 amortization impact on taxes, cash flow, and runway. Built for CFOs and founders at profitable software companies.",
+  keywords: [
+    "Section 174 calculator",
+    "R&D tax amortization",
+    "software tax planning",
+    "phantom income",
+    "SaaS CFO tools",
+  ],
   openGraph: {
     title: "Section 174 Tracker",
     description:
-      "A Section 174 calculator for profitable software companies facing phantom-income tax bills.",
+      "See how mandatory 5-year R&D amortization increases taxes and compresses runway.",
     type: "website",
     url: "https://section174tracker.com",
+    siteName: "Section 174 Tracker",
   },
-  alternates: {
-    canonical: "/",
+  twitter: {
+    card: "summary_large_image",
+    title: "Section 174 Tracker",
+    description:
+      "A practical calculator for modeling Section 174 tax impact on profitable software companies.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -36,8 +56,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${heading.variable} ${body.variable}`}>
-      <body className="min-h-screen font-[var(--font-body)] antialiased">
+    <html lang="en" className={cn("dark", "font-sans", geist.variable)}>
+      <body className={`${manrope.variable} ${spaceGrotesk.variable} antialiased`}>
         {children}
       </body>
     </html>
